@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>UBC Grades - Historical Grade Data</title>
+    <!-- Meta Share -->
+    <meta property="og:title" content="UBC Grades - Historical Grade Data" />
+    <meta property="og:type" content="website" />
+    <!--<meta property="og:image" content="images/screen.jpg" />-->
+    <!-- CSS Files -->
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:300,400,700" rel="stylesheet">
+    <!-- build:css css/app.min.css -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="css/global/plugins/icon-font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/selectize.bootstrap4.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/regular.css" integrity="sha384-hCIN6p9+1T+YkCd3wWjB5yufpReULIPQ21XA/ncf3oZ631q2HEhdC7JgKqbk//4+" crossorigin="anonymous">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- /build -->
+</head>
+
+<body>
+    <header class="bg-light" id="home">
+
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
+            <div class="container">
+                <a class="navbar-brand" href="">
+                    <h3 class="gradient-mask">UBC Grades Database</h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+                <div class="collapse navbar-collapse" id="site-nav">
+                    <ul class="navbar-nav text-sm-left ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./table-view">Table View</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./course-profile">Course Profile</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a href="./api" class="btn align-middle btn-outline-primary my-2 my-lg-0">API</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <!-- // end navbar -->
+
+    </header>
+
+    <!-- Main form -->
+    <div class="section" id="signup" style="padding-top: 1em;">
+        <div class="container">
+            <div class="top-div">
+                <div class="row mb-1">
+                    <div class="col-sm-6">
+                        <form id="sv-form" class="row">
+                            <!-- <div class="col-md-4 col-6">
+                                <label for="sv-toggle-campus" class="ml-2">Campus</label>
+                                <div class="btn-group btn-group-toggle" id="sv-toggle-campus" data-toggle="buttons"> 
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" name="options" value="UBC" checked="checked">UBC</label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="options" value="UBCO">UBCO</label>
+                                </div>
+                            </div> -->
+                            <div class="col-md-4 col-6">
+                                <label for="sv-dropdown-year" class="ml-2">YearSession</label>
+                                <select id="sv-dropdown-year" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected>Select a year to start</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-6">
+                                <label for="sv-dropdown-subject" class="ml-2">Subject</label>
+                                <select id="sv-dropdown-subject" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-6">
+                                <label for="sv-dropdown-course" class="ml-2">Course #</label>
+                                <select id="sv-dropdown-course" class="mb-2 form-control col" required>
+                                        <option value="" disabled selected></option>
+                                </select>
+                            </div>
+                            <!-- <div class="col-md-4 col-6">
+                                <label for="sv-dropdown-detail" class="ml-2">Detail</label>
+                                <select id="sv-dropdown-detail" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                            </div> -->
+                            <div class="col-md-4 col-6">
+                                <label for="sv-dropdown-section" class="ml-2">Section</label>
+                                <select id="sv-dropdown-section" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-6">
+                                <button id="form-submit-button" class="btn btn-xl btn-primary mt-4" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="ml-2 mr-2">
+                            <p>
+                            Needs to be of the form
+                            <code>YEARSESSION-SUBJECT-COURSE-SECTION</code>
+                            <!-- Example: <code>2017W-MATH-101-201</code> -->
+                            </p>
+                        </div>
+                        <div class="input-group mb-3" id="submit-text">
+                            <input type="text" id="sv-submit-text" class="form-control" placeholder="2017W-MATH-101-201" value="2017W-MATH-101-201"/>
+                            <div class="input-group-append">
+                                <button id="sv-submit-btn" class="btn btn-primary" type="submit">
+                                    Go!
+                                </button>
+                            </div>
+                        </div>
+                        <div id="error"></div>
+                    </div>
+                </div>
+                <div class="row mt-4" id="mainTable">
+                    <div class="col-md-6 col-7">
+                        <table id="head-matter" class="table table-sm">
+                            <tr>
+                                <td>Instructor</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>YearSession</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Subject</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Course</td>
+                                <td></td>
+                            </tr>
+                            <!-- <tr>
+                                <td>Detail</td>
+                                <td></td>
+                            </tr> -->
+                            <tr>
+                                <td>Section</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Title</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Enrolled</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table class="table table-sm table-responsive mb-4">
+                            <thead>
+                                <tr>
+                                    <td >Average</td>
+                                    <td>StDev</td>
+                                    <td>High</td>
+                                    <td>Low</td>
+                                    <td>Pass</td>
+                                    <td>Fail</td>
+                                    <td>Withdrew</td>
+                                    <td>Audit</td>
+                                    <td>Other</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="statistics">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive table-sm col-sm-6 col-5">
+                        <div>
+                            <table id="grades" class="table row">
+                                <tbody class="col-6 pr-2" style="border-top: 0px;">
+                                    <tr>
+                                        <td>0-9%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10-19%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>20-29%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>30-39%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>40-49%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&lt;50%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>50-54%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>55-59%</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="col-7 col-sm-6" style="border-top: 0px;">
+                                    <tr>
+                                        <td>60-63%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>64-67%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>68-71%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>72-75%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>76-79%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>80-84%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>85-89%</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>90-100%</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            <!-- <table id="grades" class="table">
+                                <tr>
+                                    <td>0-9%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>10-19%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>20-29%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>30-39%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>40-49%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>&lt;50%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>50-54%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>55-59%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>60-63%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>64-67%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>68-71%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>72-75%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>76-79%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>80-84%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>85-89%</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>90-100%</td>
+                                    <td></td>
+                                </tr>
+                            </table> -->
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- Grade Distribution Chart -->
+                    <canvas id="sectionDist"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section bg-light mt-4" id="footer">
+        <div class="container">
+            <div class=" text-center mt-4">
+                <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> in Canada</p>
+            </div>
+        </div>
+        <!-- // end .container -->
+    </div>
+    <!-- JS Files -->
+    <!-- build:js js/app.min.js -->
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/script.js"></script>
+    <script>
+        $(document).ready(onSectionViewPageLoad);
+    </script>
+    <!-- /build -->
+</body>
+
+</html>

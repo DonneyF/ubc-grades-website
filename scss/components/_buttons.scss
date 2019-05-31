@@ -1,0 +1,77 @@
+.btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    .navbar-nav & {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.btn-lg {
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 17px 35px;
+    &:hover,
+    &:active {
+        transform: translateY(-2px);
+    }
+}
+
+.btn-xl {
+    padding: 12px 25px;
+}
+
+.btn-sm {
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+.btn-primary,
+.btn-primary:focus {
+    background-color: $primary;
+    background-image: linear-gradient(90deg, $primary, $secondary);
+    border: 0;
+    color: $white;
+    //box-shadow: 0 0 20px rgba($primary, 0.5);
+    &:hover,
+    &:active {
+        color: $white;
+        background-color: darken($primary, 5%);
+        background-image: linear-gradient(90deg, $secondary, $primary);
+        //box-shadow: 0 5px 30px rgba($primary, 0.5);
+    }
+}
+
+.btn-outline,
+.btn-outline:focus {
+    color: $white;
+    background-image: none;
+    background-color: transparent;
+    border-color: $white;
+    &:hover,
+    &:active {
+        color: $gray-dark;
+        background-color: $white;
+        border-color: $white;
+    }
+}
+
+.btn-outline-primary {
+    color: $primary;
+    background-image: none;
+    background-color: transparent;
+    border-color: $primary;
+    //box-shadow: 0 0 20px rgba($primary, 0.2);
+    &:hover,
+    &:active {
+        color: $white;
+        background-color: $primary;
+        border-color: $primary;
+        background-image: linear-gradient(90deg, $primary, $secondary);
+        //box-shadow: 0 5px 30px rgba($primary, 0.5);
+    }
+}
