@@ -796,11 +796,16 @@ header {
 }
 
 @media (min-width: 990px) {
-  .top-div {
+  .round-body {
     padding: 36px 50px;
     border-radius: 25px;
     -webkit-box-shadow: 0 0 17px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 17px rgba(0, 0, 0, 0.2);
+  }
+}
+@media (max-width: 990px) {
+  .round-body-container {
+    background-color: #FFF;
   }
 }
 /*-----------------------------------
