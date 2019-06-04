@@ -4,7 +4,7 @@
 // Load the years on document ready
 function onCourseProfilePageLoad() {
     $.ajax({
-        url: "http://127.0.0.1:5000/api/subjects",
+        url: "https://ubcgrades.com/api/subjects",
         type: "GET",
         success: function (response) {
             $('#cp-dropdown-subject').selectize({
@@ -27,7 +27,7 @@ function onCourseProfilePageLoad() {
 
 function updateCPCourseNumberDropDown(subject) {
     $.ajax({
-        url: `http://127.0.0.1:5000/api/courses/${subject}`,
+        url: `https://ubcgrades.com/api/courses/${subject}`,
         type: "GET",
         success: function (response) {
             let control = $('#cp-dropdown-course').selectize()[0].selectize;
@@ -77,15 +77,15 @@ function getCourseProfileData(button, subject, course) {
     // Make multiple AJAX requests
     $.when(
         $.ajax({
-            url: `http://127.0.0.1:5000/api/course-profile/${subject}/${course}`,
+            url: `https://ubcgrades.com/api/course-profile/${subject}/${course}`,
             type: "GET",
             // A way for passing in variables to success/error callbacks
             indexValue: {$button: $button}
         }),
-        $.get(`http://127.0.0.1:5000/api/course-profile/averages/${subject}/${course}`),
-        $.get(`http://127.0.0.1:5000/api/course-profile/distributions/${subject}/${course}`),
-        $.get(`http://127.0.0.1:5000/api/course-profile/instructors/${subject}/${course}`),
-        $.get(`http://127.0.0.1:5000/api/course-profile/offerings/${subject}/${course}`)
+        $.get(`https://ubcgrades.com/api/course-profile/averages/${subject}/${course}`),
+        $.get(`https://ubcgrades.com/api/course-profile/distributions/${subject}/${course}`),
+        $.get(`https://ubcgrades.com/api/course-profile/instructors/${subject}/${course}`),
+        $.get(`https://ubcgrades.com/api/course-profile/offerings/${subject}/${course}`)
     ).then(onSuccessCP, onFailCP);
 }
 

@@ -16,7 +16,7 @@
 // Load the years on document ready
 function onSectionViewPageLoad() {
     $.ajax({
-        url: "http://127.0.0.1:5000/api/yearsessions",
+        url: "https://ubcgrades.com/api/yearsessions",
         type: "GET",
         success: function (response) {
             var data = response.reverse();
@@ -73,7 +73,7 @@ function clearSVDropdowns(ids) {
 function updateSVSubjectDropdown(yearsession) {
     if (yearsession == "") return;
     $.ajax({
-        url: `http://127.0.0.1:5000/api/subjects/${yearsession}`,
+        url: `https://ubcgrades.com/api/subjects/${yearsession}`,
         type: "GET",
         success: function (response) {
             updateSVDropdown('#sv-dropdown-subject', response);
@@ -92,7 +92,7 @@ function updateSVCourseDropdown(subject) {
     if (subject == "") return;
     let yearsession = $("#sv-dropdown-year").selectize()[0].selectize.items[0];
     $.ajax({
-        url: `http://127.0.0.1:5000/api/courses/${yearsession}/${subject}`,
+        url: `https://ubcgrades.com/api/courses/${yearsession}/${subject}`,
         type: "GET",
         success: function (response) {
             var autoSelected = updateSVDropdown('#sv-dropdown-course', response);
@@ -112,7 +112,7 @@ function updateSVSectionDropdown(course) {
     let yearsession = $("#sv-dropdown-year").selectize()[0].selectize.items[0];
     let subject = $("#sv-dropdown-subject").selectize()[0].selectize.items[0];
     $.ajax({
-        url: `http://127.0.0.1:5000/api/sections/${yearsession}/${subject}/${course}`,
+        url: `https://ubcgrades.com/api/sections/${yearsession}/${subject}/${course}`,
         type: "GET",
         success: function (response) {
             var autoSelected = updateSVDropdown('#sv-dropdown-section', response.sort());
@@ -142,7 +142,7 @@ function getSectionGrades(button, yearsession, subject, course, section) {
     }
     // Send API request
     $.ajax({
-        url: `http://127.0.0.1:5000/api/grades/${yearsession}/${subject}/${course}/${section}`,
+        url: `https://ubcgrades.com/api/grades/${yearsession}/${subject}/${course}/${section}`,
         type: "GET",
         // Function to run on success
         success: function (response) {
