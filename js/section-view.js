@@ -146,8 +146,7 @@ function getSectionGrades(button, yearsession, subject, course, section) {
         type: "GET",
         // Function to run on success
         success: function (response) {
-            console.log(response);
-            if ($.isEmptyObject(response)) {
+            if ($.isEmptyObject(response) || response.length == 0) {
                 // Invalid ID, or ID does not exist
                 clearSectionViewTable();
                 clearSectionDistChart();

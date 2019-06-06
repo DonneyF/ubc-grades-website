@@ -21,6 +21,8 @@ function onCourseProfilePageLoad() {
         plugins: ['remove_button'],
         persist: false,
         maxItems: null,
+        inputClass: 'form-control selectize-input',
+        dropdownParent: 'body',
         onChange: function(e) {updateAverageDistributionsChart(null)}
     });
 };
@@ -60,6 +62,12 @@ function updateAverageDistributionsDropdown(avgDistsArr) {
         callback(data);
     });
 }
+
+function clearAverageDistributionsDropdown(clearAll) {
+    let control = $('#cp-dropdown-avg-years').selectize()[0].selectize;
+    if(clearAll) control.clear(true);
+    control.clearOptions();
+}
 /*-----------------------------------
 * API submission
 *-----------------------------------*/
@@ -93,15 +101,9 @@ function onSuccessCP(generalResp, avgHistResp, avgDistsResp, instructorsResp, of
     // Each variable argument are lists of length 3 containing the response text,
     // status, and jqXHR object for each of the ajax calls respectively.
     $button = this[0].indexValue.$button;
-    if (generalResp[0].length == 0) {
-        // Invalid ID, or ID does not exist
-        displayError('Invalid ID, or ID does not exist.');
-        clearAverageHistoryDistChart();
-        clearCourseProfileGeneral();
+    if ($.isEmptyObject(generalResp[0])) {
+        onFailCP();
     } else {
-        $button.html($button.data('original-text'));
-        $button.removeClass('disabled');
-
         // Display the data
         delete avgHistResp[0].course;
         updateCourseProfileGeneral(generalResp[0], avgHistResp[0]);
@@ -111,11 +113,18 @@ function onSuccessCP(generalResp, avgHistResp, avgDistsResp, instructorsResp, of
         updateInstructorsTable(instructorsResp[0]);
         updateOfferingsTable(offeringsResp[0])
     }
+    $button.html($button.data('original-text'));
+    $button.removeClass('disabled');
 }
 
 function onFailCP() {
-    console.log("Fail");
+    displayError('Invalid course, or course does not exist.');
+    clearCourseProfileGeneral();
     clearAverageHistoryDistChart();
+    clearAverageDistributionsChart();
+    clearInstructorsTable();
+    clearOfferingsTable();
+    clearAverageDistributionsDropdown(true);
 }
 
 /*-----------------------------------
@@ -298,6 +307,10 @@ function clearAverageDistributionsChart() {
 /*-----------------------------------
 * Datatables
 *-----------------------------------*/
+function clearInstructorsTable() {
+    $('#cp-instructors').DataTable().clear().destroy();
+}
+
 function updateInstructorsTable(instructors) {
 
     // Map each dictionary to a dictionary that maps the instructor to a list of yearsessions
@@ -311,9 +324,7 @@ function updateInstructorsTable(instructors) {
     })
 
     // If the datatable exists, destroy it.
-    if ($.fn.DataTable.isDataTable("#cp-instructors")) {
-        $('#cp-instructors').DataTable().clear().destroy();
-      }
+    if ($.fn.DataTable.isDataTable("#cp-instructors")) clearInstructorsTable();
 
     $('#cp-instructors').DataTable({
         info: false,
@@ -329,6 +340,10 @@ function updateInstructorsTable(instructors) {
     });
 }
 
+function clearOfferingsTable() {
+    $('#cp-offerings').DataTable().clear().destroy();
+}
+
 function updateOfferingsTable(offerings) {
     delete offerings.subject;
     delete offerings.course;
@@ -341,10 +356,7 @@ function updateOfferingsTable(offerings) {
     })
 
     // If the datatable exists, destroy it.
-    if ($.fn.DataTable.isDataTable("#cp-offerings")) {
-        $('#cp-offerings').DataTable().clear().destroy();
-      }
-
+    if ($.fn.DataTable.isDataTable("#cp-offerings")) clearOfferingsTable();
     $('#cp-offerings').DataTable({
         info: false,
         responsive: true,
