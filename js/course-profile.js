@@ -25,6 +25,15 @@ function onCourseProfilePageLoad() {
         dropdownParent: 'body',
         onChange: function(e) {updateAverageDistributionsChart(null)}
     });
+    let options = {
+        info: false,
+        responsive: true,
+        paging: false,
+        searching: false,
+        scrollY: 200,
+    };
+    $('#cp-instructors').DataTable(options);
+    $('#cp-offerings').DataTable(options);
 };
 
 function updateCPCourseNumberDropDown(subject) {
@@ -221,6 +230,7 @@ function updateAverageHistoryChart(avgDistMap) {
                     backgroundColor: '#d9534f',
                     borderColor: '#d9534f',
                     fill: false,
+                    cubicInterpolationMode: 'monotone'
                 }]
             },
             options: {
@@ -252,6 +262,7 @@ function updateAverageDistributionsChart(avgDistsArr) {
     if (yearsessions.length == 0) yearsessions = ['TOTAL'];
 
     // Sum the values of the distrubutions for each year selected
+    // Get the first yearsession as a object to add values to and remove unnecessary keys
     let gradesData = JSON.parse(JSON.stringify(averageDistrubutions.filter(x => x.yearsession == yearsessions[0])[0]));
     delete gradesData["<50%"];
     delete gradesData.course;
@@ -320,7 +331,8 @@ function updateInstructorsTable(instructors) {
         Object.keys(obj).forEach(function(key) {
             if (typeof obj[key] == 'number' && obj[key] > 0 && obj.instructor != '') yearsessions.push(key);
         })
-        return {"instructor" : obj.instructor, "yearsessions": yearsessions};
+        // Format array into string
+        return {"instructor" : obj.instructor, "yearsessions": yearsessions.join(', ')};
     })
 
     // If the datatable exists, destroy it.
@@ -334,7 +346,7 @@ function updateInstructorsTable(instructors) {
         scrollY: 200,
         data: data,
         columns: [
-            {"data": "instructor",width: '200px', targets: 0},
+            {"data": "instructor"},
             {"data": "yearsessions"},
         ],
     });
@@ -364,6 +376,7 @@ function updateOfferingsTable(offerings) {
         searching: false,
         scrollY: 200,
         data: data,
+        order: [[ 0, "desc" ]],
         columns: [
             {"data": "yearsession" },
             {"data": "offerings"},

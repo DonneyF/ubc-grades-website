@@ -465,17 +465,17 @@ header {
     // box-shadow: 0 0 5px rgba(38, 38, 76, 0.05);
 }
 
-.form-control.selectize-control .selectize-input{
+.form-control.selectize-control.selectize-input {
     border-radius: 30px;
     padding: 5px 20px;
     min-height: 40px;
     // border-color: #ebebed;
     // box-shadow: 0 0 5px rgba(38, 38, 76, 0.05);
-  }
+}
   
-  .form-control.selectize-control .selectize-input.dropdown-active {
+.form-control.selectize-control.selectize-input.dropdown-active {
     border-radius: 30px;
-  }
+}
   
 
 .btn-block {

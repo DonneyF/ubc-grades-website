@@ -112,7 +112,7 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1rem;">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="font-weight-bold text-primary text-uppercase mb-1">Overall Average</div>
@@ -125,7 +125,7 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1rem;">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Rank By Average</div>
@@ -138,10 +138,10 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1rem;">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pass Percentage</div>
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pass %</div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div id="pass-percent-text" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
@@ -160,10 +160,10 @@
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1rem;">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Maximum Average</div>
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Max Average</div>
                                                 <div id="max-avg" class="h5 mb-0 font-weight-bold">-</div>
                                             </div>
                                         </div>
@@ -179,8 +179,8 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Average Distribution by Year - Select yearsessions to filter</h6>
                                     </div>
                                     <div class="card-body">
-                                        <div class="input-group">
-                                            <input type="text" id="cp-dropdown-avg-years" class="mb-2 form-control col">
+                                        <div class="input-group" id="cp-dropdown-parent">
+                                            <input type="text" id="cp-dropdown-avg-years" class="form-control mb-2 col" style="border-radius: 30px 0 0 30px;">
                                             <div class="input-group-append">
                                                 <button id="cp-dropdown-avg-years-clear" class="btn btn-primary" type="submit">Clear</button>
                                             </div>
@@ -203,12 +203,9 @@
                             <div class="col-sm-6 col-md-4">
                                 <!-- Historical Offerings -->
                                 <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Historical Class Offerings</h6>
-                                    </div>
-                                    <div class="card-body" style="padding-top: 0.5rem;">
+                                    <div style="padding: 0 0.25rem 0 0.25rem;">
                                         <table class="table table-fixed table-sm" id="cp-offerings">
-                                            <thead>
+                                            <thead class='card-header'>
                                                 <tr>
                                                     <th class="col-xs-6" style="padding: 0.5rem;">YearSession</th>
                                                     <th class="col-xs-6" style="padding: 0.5rem;"># of Sections</th>
@@ -223,12 +220,9 @@
                             <div class="col-sm-6 col-md-8">
                                 <!-- List of Instructors -->
                                 <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">List of Instructors</h6>
-                                    </div>
-                                    <div class="card-body" style="padding-top: 0.5rem;">
+                                    <div style="padding: 0 0.25rem 0 0.25rem;">
                                         <table class="table table-fixed table-sm" id="cp-instructors">
-                                            <thead>
+                                            <thead class='card-header'>
                                                 <tr>
                                                     <th class="col-xs-6" style="padding: 0.5rem; width:50% !important">Instructor</th>
                                                     <th class="col-xs-6" style="padding: 0.5rem;">YearSessions Active</th>
