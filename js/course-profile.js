@@ -128,6 +128,10 @@ function onSuccessCP(generalResp, avgHistResp, avgDistsResp, instructorsResp, of
 
 function onFailCP() {
     displayError('Invalid course, or course does not exist.');
+    clearCP();
+}
+
+function clearCP() {
     clearCourseProfileGeneral();
     clearAverageHistoryDistChart();
     clearAverageDistributionsChart();
@@ -145,9 +149,10 @@ function parseCPID(inputStr) {
     // Remove all non-character/numbers
     let stripped = inputStr.replace(/(?![A-Za-z0-9]+)./gi, "");
     // Split the result into 4 groups by regex. Index 0 contains the full match
-    let results = stripped.match(/([A-Z]+?(?=[0-9]))([0-9]{3}[A-Z]?)/i)
+    let results = stripped.match(/([A-Z]+?(?=[0-9]))([0-9]{1,3}[A-Z]?)/i)
 
     if (results.length != 3) return false;
+    if (results[2].length != 3) return false;
 
     return results.slice(1, 3).map(str => str.toUpperCase());
 }
@@ -156,6 +161,7 @@ $("#cp-id-btn").click(function(){
     let idSplit = parseCPID($('#cp-id-text').val());
     if (idSplit.length != 2 || idSplit == false) {
         displayError('Invalid ID. Check again');
+        clearCP();
     } else {
         getCourseProfileData('#cp-id-btn', idSplit[0], idSplit[1]);
     }
@@ -166,6 +172,7 @@ $('#cp-id-text').keypress(function(e) {
         let idSplit = parseCPID($('#cp-id-text').val());
         if (idSplit.length != 2 || idSplit == false) {
             displayError('Invalid ID. Check again');
+            clearCP();
         } else {
             getCourseProfileData('#cp-id-btn', idSplit[0], idSplit[1]);
         }
@@ -214,13 +221,13 @@ function clearCourseProfileGeneral() {
 
 var averageHistoryDistChart;
 function updateAverageHistoryChart(avgDistMap) {
-    document.getElementById('avgHist').style.display = "block";
+    $('#avgDistContainer').css('display', 'block');
     // Remove entries with averages of 0.
     let keys = Object.keys(avgDistMap).filter(key => avgDistMap[key] > 0);
     let values = keys.map(key => avgDistMap[key]);
 
     if (averageHistoryDistChart == null) {
-        averageHistoryDistChart = new Chart(document.getElementById('avgHist'), {
+        averageHistoryDistChart = new Chart($('#avgHist'), {
             type: 'line',
             data: {
                 labels: keys,
@@ -235,6 +242,7 @@ function updateAverageHistoryChart(avgDistMap) {
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                     display: false,
                 },
@@ -249,13 +257,14 @@ function updateAverageHistoryChart(avgDistMap) {
 };
 
 function clearAverageHistoryDistChart() {
-    document.getElementById('avgHist').style.display = "none";
+    $('#avgDistContainer').css('display', 'none');
 }
 
 
 var averageDistributionsChart;
 var averageDistrubutions;
 function updateAverageDistributionsChart(avgDistsArr) {
+    $('#avgHistContainer').css('display', 'block');
     if (avgDistsArr != null) averageDistrubutions = avgDistsArr;
     let yearsessions = $('#cp-dropdown-avg-years').selectize()[0].selectize.items;
     
@@ -292,6 +301,8 @@ function updateAverageDistributionsChart(avgDistsArr) {
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                     display: false,
                 },
@@ -312,7 +323,7 @@ function updateAverageDistributionsChart(avgDistsArr) {
 };
 
 function clearAverageDistributionsChart() {
-    document.getElementById('avgDist').style.display = "none";
+    $('#avgHistContainer').css('display', 'none');
 }
 
 /*-----------------------------------

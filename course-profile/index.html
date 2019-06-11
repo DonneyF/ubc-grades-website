@@ -28,16 +28,13 @@
             <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
                 <div class="container">
                     <a class="navbar-brand" href="/">
-                        <h3 class="gradient-mask">UBC Grades Database</h3>
+                        <h3 class="gradient-mask">UBC Grades<span class="d-none d-sm-inline"> Database</span></h3>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="site-nav">
                         <ul class="navbar-nav text-sm-left ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/table-view">Table View</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/course-profile">Course Profile</a>
                             </li>
@@ -79,7 +76,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-6">
-                                    <button id="cp-form-btn" class="btn btn-xl btn-primary mt-4" type="submit">
+                                    <button id="cp-form-btn" class="submit-margin btn btn-xl btn-primary mt-4" type="submit">
                                     Submit
                                     </button>
                                 </div>
@@ -104,7 +101,7 @@
                             <div id="error"></div>
                         </div>
                     </div>
-                    <div class="container-fluid mt-4">
+                    <div class="container-fluid mt-4" style="padding-left: 0px; padding-right: 0px">
                         <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             <h1 class="h3 mb-0 text-gray-800">Course Profile</h1>
                         </div> -->
@@ -176,16 +173,18 @@
                                 <!-- Cumulative Averages -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Average Distribution by Year - Select yearsessions to filter</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Average Distribution by Year</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="input-group" id="cp-dropdown-parent">
-                                            <input type="text" id="cp-dropdown-avg-years" class="form-control mb-2 col" style="border-radius: 30px 0 0 30px;">
-                                            <div class="input-group-append">
+                                            <input type="text" id="cp-dropdown-avg-years" class="form-control mb-2 col" style="border-radius: 30px 0 0 30px;" placeholder="Filter years">
+                                            <!-- <div class="input-group-append">
                                                 <button id="cp-dropdown-avg-years-clear" class="btn btn-primary" type="submit">Clear</button>
-                                            </div>
+                                            </div> -->
                                          </div>
-                                        <canvas id="avgDist" width="40" height="15"></canvas>
+                                        <div style="height: 300px; display: none" id="avgDistContainer">
+                                            <canvas id="avgDist"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -195,8 +194,8 @@
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">Historical Averages</h6>
                                     </div>
-                                    <div class="card-body">
-                                        <canvas id="avgHist" width="40" height="15"></canvas>
+                                    <div class="card-body" style="height: 300px; display: none" id="avgHistContainer">
+                                        <canvas id="avgHist"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -242,19 +241,17 @@
         <div class="section bg-light" id="footer">
             <div class="container">
                 <div class=" text-center mt-4">
-                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> in Canada</p>
+                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> in Canada by <a href="https://donneyfan.com">Donney Fan</a></p>
                 </div>
             </div>
             <!-- // end .container -->
         </div>
         <!-- JS Files -->
-        <!-- build:js js/app.min.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
-        <!-- Bootstrap JS -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- Main JS -->
         <script src="../js/main.js"></script>
         <script src="../js/course-profile.js"></script>

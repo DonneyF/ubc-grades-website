@@ -371,7 +371,7 @@ TABLE OF CONTENTS
 1. Header
 2. navbar
 3. Main Form
-4. Contact
+4. Charts
 5. Footer
 
 -------------------------------------------------- */
@@ -499,85 +499,6 @@ header {
 
 .overflow-hidden {
   overflow-x: hidden;
-}
-
-.bg-shape {
-  position: absolute;
-  background-color: #d9534f;
-  background-image: linear-gradient(100deg, #d9534f, #ff5b77);
-  top: -350px;
-  right: -110px;
-  border-radius: 8%;
-  width: 50%;
-  height: 800px;
-  transform: skew(3deg, 30deg);
-  opacity: 1;
-  z-index: -1;
-}
-@media (max-width: 991px) {
-  .bg-shape {
-    top: -150px;
-    right: 0;
-    width: 20%;
-    height: 500px;
-  }
-}
-@media (max-width: 767px) {
-  .bg-shape {
-    display: none;
-  }
-}
-
-.bg-circle {
-  position: absolute;
-  background-color: #d9534f;
-  background-image: linear-gradient(100deg, #d9534f, #ff5b77);
-  top: -400px;
-  left: -350px;
-  border-radius: 100%;
-  height: 800px;
-  width: 800px;
-  opacity: 0.2;
-  z-index: -1;
-}
-@media (max-width: 991px) {
-  .bg-circle {
-    height: 400px;
-    width: 400px;
-    top: -200px;
-    left: -200px;
-  }
-}
-@media (max-width: 767px) {
-  .bg-circle {
-    display: none;
-  }
-}
-
-.bg-circle-two {
-  position: absolute;
-  background-color: #d9534f;
-  background-image: linear-gradient(100deg, #d9534f, #ff5b77);
-  top: 150px;
-  left: 350px;
-  border-radius: 100%;
-  height: 100px;
-  width: 100px;
-  opacity: 0.8;
-  z-index: -1;
-}
-@media (max-width: 991px) {
-  .bg-circle-two {
-    top: 150px;
-    left: 70px;
-    height: 50px;
-    width: 50px;
-  }
-}
-@media (max-width: 767px) {
-  .bg-circle-two {
-    display: none;
-  }
 }
 
 .hero-copy .container {
@@ -787,6 +708,11 @@ header {
 /*-----------------------------------
  * Main Form
  *-----------------------------------*/
+@media (max-width: 576px) {
+  .submit-margin {
+    margin-top: 10px !important;
+  }
+}
 /* Adjust first column widths */
 #head-matter tr td:first-child, #grades tr td:first-child {
   width: 6em;
@@ -811,19 +737,19 @@ header {
 /*-----------------------------------
  * FORM
  *-----------------------------------*/
-.form-control-selectize {
+.form-control {
   border-radius: 30px;
   padding: 5px 20px;
   min-height: 40px;
 }
 
-.form-control-selectize.selectize-control.selectize-input {
+.form-control.selectize-control .selectize-input {
   border-radius: 30px;
   padding: 5px 20px;
   min-height: 40px;
 }
 
-.form-control-selectize.selectize-control .selectize-input.dropdown-active {
+.form-control .selectize-control .selectize-input.dropdown-active {
   border-radius: 30px;
 }
 
@@ -832,29 +758,10 @@ header {
 }
 
 /*-----------------------------------
- * CONTACT
+ * Graphs and Charts
  *-----------------------------------*/
-#map {
-  height: 620px;
-  width: 100%;
-}
-
-.contact-box {
-  background: #fff;
-  margin-top: -250px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
-}
-
-.address-box {
-  padding: 30px;
-  color: #fff;
-}
-.address-box a {
-  color: #fff;
-}
-
-.message-box {
-  padding: 30px;
+.card-body {
+  padding: 0.5rem;
 }
 
 /*-----------------------------------

@@ -1,4 +1,4 @@
-The API served here requires no API key. All data will be served via JSON. The url is `https://ubcgrades.com/api/`
+The API served here requires no API key. All data will be served via JSON. The url is `https://ubcgrades.com/api`
 
 #### Quick Definitions
 Key | Description | Examples
@@ -20,19 +20,19 @@ Endpoint (Required parameters are bolded) | Description | Example (Click for res
 ## Filter Data
 Endpoint (Required parameters are bolded) | Description | Example (Click for response)| Error Response
 ---|---|---|---
-/sections/**yearsession**/**subject**/**course** | Retreives all the section numbers under a particular course | [https://ubcgrades.com/api/sections/2018W/BIOL/200](https://ubcgrades.com/api/sections/2018W/BIOL/200) | `{}`
-/courses/**yearsession**/**subject** | Retreives all the course labels under a particular subject and yearsession | [https://ubcgrades.com/api/courses/2018W/POLI](https://ubcgrades.com/api/courses/2018W/POLI) | `{}`
-/courses/**subject** | Retrieves all the distinct course labels under a particular subject | [https://ubcgrades.com/api/courses/ELEC](https://ubcgrades.com/api/courses/ELEC) | `{}`
-/subjects/**yearsession** | Retreives all distinct subjects under a particular yearsession| [https://ubcgrades.com/api/subjects/2016W](https://ubcgrades.com/api/subjects/2016W) | `{}`
-/subjects | Retreives all distinct subjects across all yearsessions (no parameters)| [https://ubcgrades.com/api/subjects](https://ubcgrades.com/api/subjects) | `{}`
-/yearsessions | Retreives all available yearsessions (no parameters)| [https://ubcgrades.com/api/yearsessions](https://ubcgrades.com/api/yearsessions) | `{}`
+/sections/**yearsession**/**subject**/**course** | Retreives all the section numbers under a particular course | [https://ubcgrades.com/api/sections/2018W/BIOL/200](https://ubcgrades.com/api/sections/2018W/BIOL/200) | `[]`
+/courses/**yearsession**/**subject** | Retreives all the course labels under a particular subject and yearsession | [https://ubcgrades.com/api/courses/2018W/POLI](https://ubcgrades.com/api/courses/2018W/POLI) | `[]`
+/courses/**subject** | Retrieves all the distinct course labels under a particular subject | [https://ubcgrades.com/api/courses/ELEC](https://ubcgrades.com/api/courses/ELEC) | `[]`
+/subjects/**yearsession** | Retreives all distinct subjects under a particular yearsession| [https://ubcgrades.com/api/subjects/2016W](https://ubcgrades.com/api/subjects/2016W) | N/A
+/subjects | Retreives all distinct subjects across all yearsessions (no parameters)| [https://ubcgrades.com/api/subjects](https://ubcgrades.com/api/subjects) | `[]`
+/yearsessions | Retreives all available yearsessions (no parameters)| [https://ubcgrades.com/api/yearsessions](https://ubcgrades.com/api/yearsessions) | N/A
 
 ## Course Profile Data
 Endpoints (Required parameters are bolded) | Description | Examples (Click for response)| Error Response
 ---|---|---|---
 /course-profile/**subject** <br> /course-profile/**subject**/**course** | Retreives general data regarding course averages, pass percentage, etc. | [https://ubcgrades.com/api/course-profile/ENGL](https://ubcgrades.com/api/course-profile/ENGL) <br> [https://ubcgrades.com/api/course-profile/ENGL/112](https://ubcgrades.com/api/course-profile/ENGL/112) | `{}`
-/course-profile/distributions/**subject** <br> /course-profile/distributions/**subject**/**course** | Retreives historical course distributions | [https://ubcgrades.com/api/course-profile/distributions/SCIE](https://ubcgrades.com/api/course-profile/distributions/SCIE) <br> [https://ubcgrades.com/api/course-profile/distributions/SCIE/001](https://ubcgrades.com/api/course-profile/distributions/SCIE/001) | `{}`
-/course-profile/instructors/**subject** <br> /course-profile/instructors/**subject**/**course** | Retreives who and when instructors taught a course by yearsession | [https://ubcgrades.com/api/course-profile/instructors/LING](https://ubcgrades.com/api/course-profile/instructors/LING) <br> [https://ubcgrades.com/api/course-profile/instructors/LING/100](https://ubcgrades.com/api/course-profile/instructors/LING/100) | `{}`
+/course-profile/distributions/**subject** <br> /course-profile/distributions/**subject**/**course** | Retreives historical course distributions | [https://ubcgrades.com/api/course-profile/distributions/SCIE](https://ubcgrades.com/api/course-profile/distributions/SCIE) <br> [https://ubcgrades.com/api/course-profile/distributions/SCIE/001](https://ubcgrades.com/api/course-profile/distributions/SCIE/001) | `[]`
+/course-profile/instructors/**subject** <br> /course-profile/instructors/**subject**/**course** | Retreives who and when instructors taught a course by yearsession | [https://ubcgrades.com/api/course-profile/instructors/LING](https://ubcgrades.com/api/course-profile/instructors/LING) <br> [https://ubcgrades.com/api/course-profile/instructors/LING/100](https://ubcgrades.com/api/course-profile/instructors/LING/100) | `[]`
 /course-profile/offerings/**subject** <br> /course-profile/offerings/**subject**/**course** | Retrieves the number of grade-distribution-existing sections by yearsession | [https://ubcgrades.com/api/course-profile/offerings/KIN](https://ubcgrades.com/api/course-profile/offerings/KIN) <br> [https://ubcgrades.com/api/course-profile/offerings/KIN/110](https://ubcgrades.com/api/course-profile/offerings/KIN/110) | `{}`
 
 
