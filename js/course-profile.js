@@ -190,6 +190,8 @@ $("#cp-form").submit(function(){
 function updateCourseProfileGeneral(generalData, avgHistData) {
     // Overall Average
     $('#overall-avg')[0].innerText = generalData['average'];
+    // Rank
+    $('#rank-by-avg')[0].innerText = generalData['avg_rank'];
 
     // Pass Percentage
     $('#pass-percent-text')[0].innerText = generalData['pass_percent'];
