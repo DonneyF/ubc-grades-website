@@ -84,7 +84,7 @@ function clearAverageDistributionsDropdown(clearAll) {
 // AJAX Requests
 function getCourseProfileData(button, subject, course) {
     let $button = $(button);
-    let loadingText = '<i class="fa fa-circle-o-notch fa-spin mr-1"></i> Loading...';
+    let loadingText = 'Loading...';
     if ($button.html() !== loadingText) {
         $button.data('original-text', $button.html());
         $button.addClass('disabled');

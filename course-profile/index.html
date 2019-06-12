@@ -1,152 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>UBC Grades - Historical Grade Data</title>
-        <!-- Meta Share -->
-        <meta property="og:title" content="UBC Grades - Historical Grade Data" />
-        <meta property="og:type" content="website" />
-        <!--<meta property="og:image" content="images/screen.jpg" />-->
-        <!-- CSS Files -->
-        <link href="https://fonts.googleapis.com/css?family=Product+Sans:300,400,700" rel="stylesheet">
-        <!-- build:css css/app.min.css -->
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" crossorigin="anonymous">
-        <!-- Plugins -->
-        <!-- <link rel="stylesheet" href="../css/global/plugins/icon-font.css"> -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="../css/selectize.bootstrap4.css">
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="../css/style.css">
-        <!-- /build -->
-    </head>
-    <body>
-        <header class="bg-light" id="home">
-            <!-- navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
-                <div class="container">
-                    <a class="navbar-brand" href="/">
-                        <h3 class="gradient-mask">UBC Grades<span class="d-none d-sm-inline"> Database</span></h3>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="site-nav">
-                        <ul class="navbar-nav text-sm-left ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/course-profile">Course Profile</a>
-                            </li>
-                            <li class="nav-item text-center">
-                                <a href="/api" class="btn align-middle btn-outline-primary my-2 my-lg-0">API</a>
-                            </li>
-                        </ul>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>UBC Grades - Historical Grade Data</title>
+    <!-- Meta Share -->
+    <meta property="og:title" content="UBC Grades - Historical Grade Data" />
+    <meta property="og:type" content="website" />
+    <meta name="description" content="A tool to look up UBC historical grade distributions. Visualize some data and make important choices.">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--<meta property="og:image" content="images/screen.jpg" />-->
+    <!-- CSS Files -->
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:300,400,700" rel="stylesheet">
+    <!-- build:css css/app.min.css -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Plugins -->
+    <!-- <link rel="stylesheet" href="../css/global/plugins/icon-font.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../css/selectize.bootstrap4.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- /build -->
+</head>
+<body>
+    <header class="bg-light" id="home">
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <h3 class="gradient-mask">UBC Grades<span class="d-none d-sm-inline"> Database</span></h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="site-nav">
+                    <ul class="navbar-nav text-sm-left ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/course-profile">Course Profile</a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a href="/api" class="btn align-middle btn-outline-primary my-2 my-lg-0">API</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- // end navbar -->
+    </header>
+    <!-- Main form -->
+    <div class="bg-light pb-4" id="signup" style="padding-top: 1em;">
+        <div class="round-body-container container">
+            <div class="round-body" style="background-color: #fff">
+                <div class="row mb-1">
+                    <div class="col-sm-7">
+                        <form id="cp-form" class="row">
+                            <!-- <div class="col-md-4 col-6">
+                                <label for="sv-toggle-campus" class="ml-2">Campus</label>
+                                <div class="btn-group btn-group-toggle" id="sv-toggle-campus" data-toggle="buttons"> 
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" name="options" value="UBC" checked="checked">UBC</label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="options" value="UBCO">UBCO</label>
+                                </div>
+                            </div> -->
+                            <div class="col-4" style="padding-right: 0px">
+                                <label for="cp-dropdown-subject" class="ml-2">Subject</label>
+                                <select id="cp-dropdown-subject" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                            </div>
+                            <div class="col-4" style="padding-right: 0px">
+                                <label for="cp-dropdown-course" class="ml-2">Course</label>
+                                <select id="cp-dropdown-course" class="mb-2 form-control col" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                            </div>
+                            <div class="col-4" style="padding-right: 0px">
+                                <button id="cp-form-btn" class="btn btn-xl btn-primary mt-4" type="submit">
+                                Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="ml-2 mr-2">
+                            <p>
+                                Enter a course. Needs to be of the form
+                                <code>SUBJECT COURSE</code>
+                                <!-- Example: <code>POLI 100</code> -->
+                            </p>
+                        </div>
+                        <div class="input-group mb-3" id="submit-text">
+                            <input type="text" id="cp-id-text" class="form-control" placeholder="POLI 100"/>
+                            <div class="input-group-append">
+                                <button id="cp-id-btn" class="btn btn-primary" type="submit">
+                                Go!
+                                </button>
+                            </div>
+                        </div>
+                        <div id="error"></div>
                     </div>
                 </div>
-            </nav>
-            <!-- // end navbar -->
-        </header>
-        <!-- Main form -->
-        <div class="bg-light pb-4" id="signup" style="padding-top: 1em;">
-            <div class="round-body-container container">
-                <div class="round-body" style="background-color: #fff">
-                    <div class="row mb-1">
-                        <div class="col-sm-7">
-                            <form id="cp-form" class="row">
-                                <!-- <div class="col-md-4 col-6">
-                                    <label for="sv-toggle-campus" class="ml-2">Campus</label>
-                                    <div class="btn-group btn-group-toggle" id="sv-toggle-campus" data-toggle="buttons"> 
-                                        <label class="btn btn-primary active">
-                                            <input type="radio" name="options" value="UBC" checked="checked">UBC</label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="options" value="UBCO">UBCO</label>
-                                    </div>
-                                </div> -->
-                                <div class="col-md-4 col-6">
-                                    <label for="cp-dropdown-subject" class="ml-2">Subject</label>
-                                    <select id="cp-dropdown-subject" class="mb-2 form-control col" required>
-                                        <option value="" disabled selected></option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4 col-6">
-                                    <label for="cp-dropdown-course" class="ml-2">Course</label>
-                                    <select id="cp-dropdown-course" class="mb-2 form-control col" required>
-                                        <option value="" disabled selected></option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4 col-6">
-                                    <button id="cp-form-btn" class="submit-margin btn btn-xl btn-primary mt-4" type="submit">
-                                    Submit
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="ml-2 mr-2">
-                                <p>
-                                    Needs to be of the form
-                                    <code>SUBJECT COURSE</code>
-                                    <!-- Example: <code>POLI 100</code> -->
-                                </p>
-                            </div>
-                            <div class="input-group mb-3" id="submit-text">
-                                <input type="text" id="cp-id-text" class="form-control" placeholder="POLI 100"/>
-                                <div class="input-group-append">
-                                    <button id="cp-id-btn" class="btn btn-primary" type="submit">
-                                    Go!
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="error"></div>
-                        </div>
-                    </div>
-                    <div class="container-fluid mt-4" style="padding-left: 0px; padding-right: 0px">
-                        <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Course Profile</h1>
-                        </div> -->
-                        <div class="row">
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 col-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="cp-card card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="font-weight-bold text-primary text-uppercase mb-1">Overall Average</div>
-                                                <div id="overall-avg" class="h5 mb-0 font-weight-bold">-</div>
-                                            </div>
+                <div class="container-fluid mt-4" style="padding-left: 0px; padding-right: 0px">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Course Profile</h1>
+                    </div> -->
+                    <div class="row">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="cp-card card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="font-weight-bold text-primary text-uppercase mb-1">Overall Average</div>
+                                            <div id="overall-avg" class="h5 mb-0 font-weight-bold">-</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 col-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="cp-card card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Max & Min Grades</div>
-                                                <div class="h5 mb-0 font-weight-bold" id="cp-high-low">-</div>
-                                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="cp-card card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Max & Min Grades</div>
+                                            <div class="h5 mb-0 font-weight-bold" id="cp-high-low">-</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 col-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="cp-card card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pass %</div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div id="pass-percent-text" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress progress-sm mr-2">
-                                                            <div id="pass-percent-bar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="cp-card card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pass %</div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div id="pass-percent-text" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">-</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div id="pass-percent-bar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,83 +160,83 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Pending Requests Card Example -->
-                            <div class="col-xl-3 col-md-6 col-6 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="cp-card card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Max Average</div>
-                                                <div id="max-avg" class="h5 mb-0 font-weight-bold">-</div>
-                                            </div>
+                        </div>
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 col-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="cp-card card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Max Average</div>
+                                            <div id="max-avg" class="h5 mb-0 font-weight-bold">-</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <!-- Cumulative Averages -->
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Average Distribution by Year</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="input-group" id="cp-dropdown-parent">
-                                            <input type="text" id="cp-dropdown-avg-years" class="form-control mb-2 col" style="border-radius: 30px 0 0 30px;" placeholder="Filter years">
-                                            <!-- <div class="input-group-append">
-                                                <button id="cp-dropdown-avg-years-clear" class="btn btn-primary" type="submit">Clear</button>
-                                            </div> -->
-                                         </div>
-                                        <div style="height: 300px; display: none" id="avgDistContainer">
-                                            <canvas id="avgDist"></canvas>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Cumulative Averages -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Average Distribution by Year</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="input-group" id="cp-dropdown-parent">
+                                        <input type="text" id="cp-dropdown-avg-years" class="form-control mb-2 col" style="border-radius: 30px 0 0 30px;" placeholder="Filter years">
+                                        <!-- <div class="input-group-append">
+                                            <button id="cp-dropdown-avg-years-clear" class="btn btn-primary" type="submit">Clear</button>
+                                        </div> -->
                                         </div>
+                                    <div style="height: 300px; display: none" id="avgDistContainer">
+                                        <canvas id="avgDist"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <!-- Historical Averages Graph -->
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Historical Averages</h6>
-                                    </div>
-                                    <div class="card-body" style="height: 300px; display: none" id="avgHistContainer">
-                                        <canvas id="avgHist"></canvas>
-                                    </div>
+                        </div>
+                        <div class="col-12">
+                            <!-- Historical Averages Graph -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Historical Averages</h6>
+                                </div>
+                                <div class="card-body" style="height: 300px; display: none" id="avgHistContainer">
+                                    <canvas id="avgHist"></canvas>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <!-- Historical Offerings -->
-                                <div class="card shadow mb-4">
-                                    <div style="padding: 0 0.25rem 0 0.25rem;">
-                                        <table class="table table-fixed table-sm" id="cp-offerings">
-                                            <thead class='card-header'>
-                                                <tr>
-                                                    <th class="col-xs-6" style="padding: 0.5rem;">YearSession</th>
-                                                    <th class="col-xs-6" style="padding: 0.5rem;"># of Sections</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <!-- Historical Offerings -->
+                            <div class="card shadow mb-4">
+                                <div style="padding: 0 0.25rem 0 0.25rem;">
+                                    <table class="table table-fixed table-sm" id="cp-offerings">
+                                        <thead class='card-header'>
+                                            <tr>
+                                                <th class="col-xs-6" style="padding: 0.5rem;">YearSession</th>
+                                                <th class="col-xs-6" style="padding: 0.5rem;"># of Sections</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-8">
-                                <!-- List of Instructors -->
-                                <div class="card shadow mb-4">
-                                    <div style="padding: 0 0.25rem 0 0.25rem;">
-                                        <table class="table table-fixed table-sm" id="cp-instructors">
-                                            <thead class='card-header'>
-                                                <tr>
-                                                    <th class="col-xs-6" style="padding: 0.5rem; width:50% !important">Instructor</th>
-                                                    <th class="col-xs-6" style="padding: 0.5rem;">YearSessions Active</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="col-sm-6 col-md-8">
+                            <!-- List of Instructors -->
+                            <div class="card shadow mb-4">
+                                <div style="padding: 0 0.25rem 0 0.25rem;">
+                                    <table class="table table-fixed table-sm" id="cp-instructors">
+                                        <thead class='card-header'>
+                                            <tr>
+                                                <th class="col-xs-6" style="padding: 0.5rem; width:50% !important">Instructor</th>
+                                                <th class="col-xs-6" style="padding: 0.5rem;">YearSessions Active</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -238,26 +244,27 @@
                 </div>
             </div>
         </div>
-        <div class="section bg-light" id="footer">
-            <div class="container">
-                <div class=" text-center mt-4">
-                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> by <a href="https://donneyfan.com">Donney Fan</a></p>
-                </div>
+    </div>
+    <div class="section bg-light" id="footer">
+        <div class="container">
+            <div class=" text-center mt-4">
+                <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> by <a href="https://donneyfan.com">Donney Fan</a></p>
             </div>
-            <!-- // end .container -->
         </div>
-        <!-- JS Files -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <!-- Main JS -->
-        <script src="../js/main.js"></script>
-        <script src="../js/course-profile.js"></script>
-        <script>
-            $(document).ready(onCourseProfilePageLoad);
-        </script>
-        <!-- /build -->
-    </body>
+        <!-- // end .container -->
+    </div>
+    <!-- JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/course-profile.js"></script>
+    <script>
+        $(document).ready(onCourseProfilePageLoad);
+    </script>
+    <!-- /build -->
+</body>
 </html>

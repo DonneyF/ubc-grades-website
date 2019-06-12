@@ -40,7 +40,7 @@ Endpoints (Required parameters are bolded) | Description | Examples (Click for r
 
 Here you can download **raw** data as one might obtain directly from PAIR. The contained CSVs are **unmodified** and contains some errors or inconsistencies:
 
-- Certain rows are duplicated by everything except for the `Professor` column. Most of the time there one field will be empty and the other will be populated. In a few cases, all `Professor` columns will be non-empty and contain different entries. My solution to this was manually looking up the section info from PAIR and adjusting the section as necessary. You can download the correction JSON file here.
+- Certain rows are duplicated by everything except for the `Professor` column. Most of the time there one field will be empty and the other will be populated. In a few cases, all `Professor` columns will be non-empty and contain different entries. My solution to this was manually looking up the section info from PAIR and adjusting the section as necessary. You can download the correction JSON file here: [UBC](https://files.ubcgrades.com/file/ubcgrades/UBC-instructor-corrections.json)
     - An exeption to this is `UBC-2007W-DENT-420-PSI` whose row is simply duplicated with no changes.
 - `OVERALL` sections are generated on the basis of the course code for the year, rather than per-section. As such there will be numerous `OVERALL` rows if a course has a detail field.
 - The CSV data may conflict with the section data shown on PAIR.

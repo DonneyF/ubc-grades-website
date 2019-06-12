@@ -131,7 +131,7 @@ function updateSVSectionDropdown(course) {
 
 function getSectionGrades(button, yearsession, subject, course, section) {
     let $button = $(button);
-    let loadingText = '<i class="fa fa-circle-o-notch fa-spin mr-1"></i> Loading...';
+    let loadingText = 'Loading...';
     if ($button.html() !== loadingText) {
         // Store original text
         $button.data('original-text', $button.html());
