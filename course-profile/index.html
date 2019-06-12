@@ -109,7 +109,7 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body" style="padding: 1rem;">
+                                    <div class="cp-card card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="font-weight-bold text-primary text-uppercase mb-1">Overall Average</div>
@@ -122,11 +122,11 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body" style="padding: 1rem;">
+                                    <div class="cp-card card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Rank By Average</div>
-                                                <div class="h5 mb-0 font-weight-bold"><span id="rank-by-avg">-</span><span class='h6'>/13907</span></div>
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Max & Min Grades</div>
+                                                <div class="h5 mb-0 font-weight-bold" id="cp-high-low">-</div>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body" style="padding: 1rem;">
+                                    <div class="cp-card card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pass %</div>
@@ -157,7 +157,7 @@
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 col-6 mb-4">
                                 <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body" style="padding: 1rem;">
+                                    <div class="cp-card card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Max Average</div>
@@ -241,7 +241,7 @@
         <div class="section bg-light" id="footer">
             <div class="container">
                 <div class=" text-center mt-4">
-                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> in Canada by <a href="https://donneyfan.com">Donney Fan</a></p>
+                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> by <a href="https://donneyfan.com">Donney Fan</a></p>
                 </div>
             </div>
             <!-- // end .container -->
@@ -256,8 +256,8 @@
         <script src="../js/main.js"></script>
         <script src="../js/course-profile.js"></script>
         <script>
-                $(document).ready(onCourseProfilePageLoad);
-            </script>
+            $(document).ready(onCourseProfilePageLoad);
+        </script>
         <!-- /build -->
     </body>
 </html>

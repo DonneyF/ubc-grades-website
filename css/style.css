@@ -394,73 +394,6 @@ header {
   background-image: -webkit-gradient(linear, left top, right top, from(#d9534f), to(#ff5b77));
 }
 
-/*Swiper Slider*/
-.swiper-container {
-  width: 100%;
-  height: 850px;
-  height: 100vh;
-}
-.swiper-container .jumbotron {
-  min-height: auto;
-}
-
-@media (max-width: 767px) {
-  .swiper-button-prev,
-.swiper-button-next {
-    display: none;
-  }
-}
-.parallax-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 130%;
-  height: 100%;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center;
-}
-.parallax-bg.bg-overlay:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.bg-video video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  background: url("../images/agency/poster.jpg") no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
-}
-
-.bg-video.align-bottom video {
-  top: auto;
-  bottom: 0;
-  transform: translateX(-50%) translateY(0);
-}
-
-.swiper-button-prev,
-.swiper-container-rtl .swiper-button-next {
-  left: 30px;
-}
-
-.swiper-button-next,
-.swiper-container-rtl .swiper-button-prev {
-  right: 30px;
-}
-
-/*end swiper css*/
 .jumbotron {
   width: 100%;
   background-color: transparent;
@@ -528,30 +461,6 @@ header {
     font-size: 2.5rem;
   }
 }
-.split-bg {
-  background: linear-gradient(to bottom, #f8faff 0%, #f8faff 50%, white 50%);
-}
-
-.macbook-hero {
-  max-width: 1100px;
-  position: relative;
-  margin: 0 auto;
-}
-.macbook-hero .macbook-screen {
-  position: absolute;
-  left: 12.4%;
-  top: 5.4%;
-  right: 11.8%;
-  bottom: 30.6%;
-  max-width: 835px;
-  max-height: 522px;
-  background: #fff;
-}
-.macbook-hero .macbook-screen img {
-  width: 100%;
-  height: 100%;
-}
-
 .section {
   position: relative;
 }
@@ -758,12 +667,17 @@ header {
 }
 
 /*-----------------------------------
- * Graphs and Charts
+ * Course Profile
  *-----------------------------------*/
 .card-body {
   padding: 0.5rem;
 }
 
+@media (min-width: 576px) {
+  .cp-card {
+    padding: 1rem;
+  }
+}
 /*-----------------------------------
  * FOOTER
  *-----------------------------------*/

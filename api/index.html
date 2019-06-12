@@ -27,7 +27,7 @@
             <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
                 <div class="container">
                     <a class="navbar-brand" href="/">
-                        <h3 class="gradient-mask">UBC Grades Database</h3>
+                        <h3 class="gradient-mask">UBC Grades<span class="d-none d-sm-inline"> Database</span></h3>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -170,7 +170,7 @@
                                     <td>/subjects/<strong>yearsession</strong></td>
                                     <td>Retreives all distinct subjects under a particular yearsession</td>
                                     <td><a href="https://ubcgrades.com/api/subjects/2016W">https://ubcgrades.com/api/subjects/2016W</a></td>
-                                    <td>N/A</td>
+                                    <td><code>[]</code></td>
                                 </tr>
                                 <tr>
                                     <td>/subjects</td>
@@ -182,7 +182,7 @@
                                     <td>/yearsessions</td>
                                     <td>Retreives all available yearsessions (no parameters)</td>
                                     <td><a href="https://ubcgrades.com/api/yearsessions">https://ubcgrades.com/api/yearsessions</a></td>
-                                    <td><code>{}</code></td>
+                                    <td>N/A</td>
                                 </tr>
                             </tbody>
                             </table>
@@ -227,7 +227,17 @@
                             </table>
                         </div>
                         <h1><a id="Download_Data_38"></a>Download Data</h1>
-                        <p>Here you can download <strong>raw</strong> data as one might obtain directly from PAIR.</p>
+                        <p>Here you can download <strong>raw</strong> data as one might obtain directly from PAIR. The contained CSVs are <strong>unmodified</strong> and contains some errors or inconsistencies:</p>
+                        <ul>
+                        <li>
+                            Certain rows are duplicated by everything except for the <code>Professor</code> column. Most of the time there one field will be empty and the other will be populated. In a few cases, all <code>Professor</code> columns will be non-empty and contain different entries. My solution to this was manually looking up the section info from PAIR and adjusting the section as necessary. You can download the correction JSON file here.
+                            <ul>
+                                <li>An exeption to this is <code>UBC-2007W-DENT-420-PSI</code> whose row is simply duplicated with no changes.</li>
+                            </ul>
+                        </li>
+                        <li><code>OVERALL</code> sections are generated on the basis of the course code for the year, rather than per-section. As such there will be numerous <code>OVERALL</code> rows if a course has a detail field.</li>
+                        <li>The CSV data may conflict with the section data shown on PAIR.</li>
+                        </ul>
                         <p>Note: As of June 2019, the 2018W grades for UBC and UBCO still await further results from extraneous reasons such as standing deferred and cancelled exams. The data here will be updated mid-September 2019.</p>
                         <h2><a id="UBC_Vancouver_44"></a>UBC Vancouver</h2>
                         <div class="table-responsive">
@@ -537,7 +547,7 @@
         <div class="section bg-light" id="footer">
             <div class="container">
                 <div class=" text-center mt-4">
-                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> in Canada by <a href="https://donneyfan.com">Donney Fan</a></p>
+                    <p>Made with <span style="color: #e25555; font-size: 1.5em;">&hearts;</span> by <a href="https://donneyfan.com">Donney Fan</a></p>
                 </div>
             </div>
             <!-- // end .container -->

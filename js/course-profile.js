@@ -149,10 +149,12 @@ function parseCPID(inputStr) {
     // Remove all non-character/numbers
     let stripped = inputStr.replace(/(?![A-Za-z0-9]+)./gi, "");
     // Split the result into 4 groups by regex. Index 0 contains the full match
-    let results = stripped.match(/([A-Z]+?(?=[0-9]))([0-9]{1,3}[A-Z]?)/i)
+    let results = stripped.match(/([A-Z]+?(?=[0-9]))([0-9]{1,3})([A-Z]?)/i)
 
-    if (results.length != 3) return false;
-    if (results[2].length != 3) return false;
+    if (results.length != 4) return false;
+    if (results[2].length != 3) results[2] = ('000' + results[2]).substr(-3);
+    console.log(results);
+    results[2] = results[2] + results[3];
 
     return results.slice(1, 3).map(str => str.toUpperCase());
 }
@@ -190,8 +192,8 @@ $("#cp-form").submit(function(){
 function updateCourseProfileGeneral(generalData, avgHistData) {
     // Overall Average
     $('#overall-avg')[0].innerText = generalData['average'];
-    // Rank
-    $('#rank-by-avg')[0].innerText = generalData['avg_rank'];
+    // High-Low
+    $('#cp-high-low')[0].innerText = generalData['high'] + " - " + generalData['low'];
 
     // Pass Percentage
     $('#pass-percent-text')[0].innerText = generalData['pass_percent'];
