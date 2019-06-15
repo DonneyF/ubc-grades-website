@@ -498,6 +498,9 @@ header {
   background: #FFF !important;
   box-shadow: 0px 9px 68px 0px rgba(62, 57, 107, 0.1);
 }
+.navbar .nav-link:hover {
+  color: #d9534f !important;
+}
 
 .navbar-toggler {
   margin-top: 5px;
@@ -550,7 +553,7 @@ header {
   }
 }
 .navbar-nav .nav-link {
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   position: relative;
 }
@@ -597,6 +600,11 @@ header {
     padding-left: 1rem;
   }
 }
+@media (min-width: 576px) {
+  .navbar-mobile {
+    display: none;
+  }
+}
 /*Dropdown*/
 .dropdown-menu {
   border-radius: 0;
@@ -617,7 +625,17 @@ header {
 /*-----------------------------------
  * Main Form
  *-----------------------------------*/
-@media (max-width: 576px) {
+@media (min-width: 768px) {
+  .main-form {
+    padding-top: 1em;
+  }
+}
+@media (max-width: 575px) {
+  .main-form {
+    margin-top: 1em;
+  }
+}
+@media (max-width: 991px) {
   .submit-margin {
     margin-top: 10px !important;
   }

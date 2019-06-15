@@ -26,7 +26,6 @@
     <!-- <link rel="stylesheet" href="css/global/plugins/icon-font.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="css/selectize.bootstrap4.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/regular.css" integrity="sha384-hCIN6p9+1T+YkCd3wWjB5yufpReULIPQ21XA/ncf3oZ631q2HEhdC7JgKqbk//4+" crossorigin="anonymous">
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- /build -->
@@ -36,15 +35,14 @@
     <header class="bg-light" id="home">
 
         <!-- navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
+        <nav class="d-none d-sm-inline navbar navbar-expand-lg navbar-light navbar-transparent">
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <h3 class="gradient-mask">UBC Grades<span class="d-none d-sm-inline"> Database</span></h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
+                <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="site-nav">
                     <ul class="navbar-nav text-sm-left ml-auto">
                         <li class="nav-item">
@@ -58,12 +56,24 @@
                 </div>
             </div>
         </nav>
-        <!-- // end navbar -->
+        <!-- Mobile Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-transparent navbar-mobile">
+            <a class="navbar-brand" href="/">
+                <h4 class="gradient-mask" style="margin-bottom: 0rem;">UBC Grades</h4>
+            </a>
+            <div class="d-flex order-lg-1 ml-auto pr-2">
+                <ul class="navbar-nav flex-row" style="margin-bottom: 0px">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/course-profile">Course Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
     </header>
 
     <!-- Main form -->
-    <div class="bg-light pb-4" id="signup" style="padding-top: 1em;">
+    <div class="main-form bg-light pb-4">
         <div class="round-body-container container">
             <div class="round-body" style="background-color: #fff">
                 <div class="row mb-1">
@@ -80,19 +90,19 @@
                             </div> -->
                             <div class="col-md-4 col-6">
                                 <label for="sv-dropdown-year" class="ml-2">YearSession</label>
-                                <select id="sv-dropdown-year" class="mb-2 form-control col" required>
-                                    <option value="" disabled selected>Select a year to start</option>
+                                <select id="sv-dropdown-year" class="mb-sm-2 form-control col" required>
+                                    <option value="" disabled selected>Start here</option>
                                 </select>
                             </div>
                             <div class="col-md-4 col-6">
                                 <label for="sv-dropdown-subject" class="ml-2">Subject</label>
-                                <select id="sv-dropdown-subject" class="mb-2 form-control col" required>
+                                <select id="sv-dropdown-subject" class="mb-sm-2 form-control col" required>
                                     <option value="" disabled selected></option>
                                 </select>
                             </div>
                             <div class="col-md-4 col-6">
                                 <label for="sv-dropdown-course" class="ml-2">Course #</label>
-                                <select id="sv-dropdown-course" class="mb-2 form-control col" required>
+                                <select id="sv-dropdown-course" class="mb-sm-2 form-control col" required>
                                         <option value="" disabled selected></option>
                                 </select>
                             </div>
@@ -104,7 +114,7 @@
                             </div> -->
                             <div class="col-md-4 col-6">
                                 <label for="sv-dropdown-section" class="ml-2">Section</label>
-                                <select id="sv-dropdown-section" class="mb-2 form-control col" required>
+                                <select id="sv-dropdown-section" class="mb-sm-2 form-control col" required>
                                     <option value="" disabled selected></option>
                                 </select>
                             </div>
@@ -118,7 +128,7 @@
                     <div class="col-sm-6">
                         <div class="ml-2 mr-2">
                             <p>
-                            Enter a section. Needs to be of the form
+                            Or enter a section. Form: 
                             <code>YEARSESSION SUBJECT COURSE SECTION</code>
                             <!-- Example: <code>2017W-MATH-101-201</code> -->
                             </p>
@@ -135,14 +145,14 @@
                     </div>
                 </div>
                 <div class="row mt-4" id="mainTable">
-                    <div class="col-md-6 col-7">
+                    <div class="col-md-6 col-7 col-sm-6">
                         <table id="head-matter" class="table table-sm">
                             <tr>
                                 <td>Instructor</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>YearSession</td>
+                                <td>Yearsession</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -237,7 +247,7 @@
                                         <td></td>
                                     </tr>
                                 </tbody>
-                                <tbody class="col-7 col-sm-6" style="border-top: 0px;">
+                                <tbody class="col-7 col-md-6" style="border-top: 0px;">
                                     <tr>
                                         <td>60-63%</td>
                                         <td></td>
